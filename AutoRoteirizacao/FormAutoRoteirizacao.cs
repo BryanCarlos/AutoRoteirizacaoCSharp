@@ -61,19 +61,16 @@ namespace AutoRoteirizacao
                     }
 
                     var guilhotinaSheet = resultWorkbook.Sheets["GUILHOTINA"];
-                    guilhotinaSheet.Range["A1:D1"].Value2 = headers;
-
                     var plasmaSheet = resultWorkbook.Sheets["PLASMA"];
-                    plasmaSheet.Range["A1:D1"].Value2 = headers;
-
                     var laserSheet = resultWorkbook.Sheets["LASER"];
-                    laserSheet.Range["A1:D1"].Value2 = headers;
-
                     var serraSheet = resultWorkbook.Sheets["SERRA"];
-                    serraSheet.Range["A1:D1"].Value2 = headers;
-
                     var semObsSheet = resultWorkbook.Sheets["SEMOBS"];
-                    semObsSheet.Range["A1:D1"].Value2 = headers;
+
+                    foreach (var sheetName in new[] { "GUILHOTINA", "PLASMA", "LASER", "SERRA", "SEMOBS" })
+                    {
+                        var sheet = resultWorkbook.Sheets[sheetName];
+                        sheet.Range["A1:D1"].Value2 = headers;
+                    }
 
                     int rowGuilhotina = 2, rowPlasma = 2, rowLaser = 2, rowSerra = 2, rowSemObs = 2;
 
